@@ -22,7 +22,7 @@ road_width = width // 1.6
 roadmark_width = width // 80
 right_lane = width/2 + road_width/4
 left_lane = width/2 - road_width/4
-speed = 4
+speed = 4.5
 
 #window size is 1000 x 600
 screen = pygame.display.set_mode(size)
