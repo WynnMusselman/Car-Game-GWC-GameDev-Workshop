@@ -3,13 +3,13 @@ mod ideas (in order of easiest to hardest):
 - create your own assets for the cars
 - make it so the car can not drive off side of road
 - increase enemy's speed as game progresses
-- add score (a litle challenging and will require some googling)
+- add score 
 """
 
 #https://www.youtube.com/watch?v=W-QOtdD3qx4
 
 import pygame #python3 -m pip install -U pygame --user
-import random
+import random # python -m pygame.examples.aliens
 
 #initialize pygame app
 pygame.init()
@@ -22,7 +22,9 @@ road_width = width // 1.6
 roadmark_width = width // 80
 right_lane = width/2 + road_width/4
 left_lane = width/2 - road_width/4
-speed = 4.5
+speed = 1
+
+score = 0
 
 #window size is 1000 x 600
 screen = pygame.display.set_mode(size)
@@ -45,13 +47,9 @@ car_enemy_location = car_enemy.get_rect()
 car_enemy_location.center = left_lane, height*0.2
 
 
-
-#waits for user to click exit button and once they do so, exit app
 counter = 0 #used for mod where enemy's speed increases 
 
 #mod - show score at top of screen
-clock = pygame.time.Clock()
-start_time = pygame.time.get_ticks() 
 font = pygame.font.Font(None, 36)
 
 right_side = True
@@ -60,8 +58,8 @@ while running:
 
     #mod - increase enemy's speed as game progresses
     counter += 1
-    if (counter == 300):
-        speed += 1
+    if (counter == 1024):
+        speed += 0.25
         counter = 0
         print("Level Up!", speed)
 
@@ -82,6 +80,10 @@ while running:
     if(car_location[0] == car_enemy_location[0]) and (car_enemy_location[1] > car_location[1] - 250):
         print("GAME OVER")
         break #breaks while loop to bring game to very last line of code, which collapses game window
+
+    if (car_location[0] != car_enemy_location[0]) and (car_enemy_location[1] == car_location[1] - 250):
+        score += 1
+        print(score)
 
     #all events are stored in pygame.event
     for event in pygame.event.get():
@@ -140,13 +142,10 @@ while running:
     screen.blit(car_enemy, car_enemy_location)
 
     #draws score for mod
-    elapsed_seconds = (pygame.time.get_ticks() - start_time) / 1000.0
-    score_text = font.render(f'Score: {int(elapsed_seconds)}', True, (255, 255, 255))
+    score_text = font.render(f'Score: {int(score)}', True, (255, 255, 255))
     screen.blit(score_text, (10, 10))
 
     pygame.display.update() #update our game again!
-
-    clock.tick(60) #score mod
 
 #collapse app window
 pygame.quit()
