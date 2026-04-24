@@ -1,5 +1,5 @@
 """
-mod ideas (in order of easiest to hardest):
+mod ideas:
 - create your own assets for the cars
 - make it so the car can not drive off side of road
 - increase enemy's speed as game progresses
