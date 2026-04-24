@@ -5,7 +5,6 @@ import random
 
 #initialize pygame app
 pygame.init()
-running = True
 
 #allows us to use relative sizing instead of absolute
 size = width, height = (1000, 600) #even if we change these numnbers, the graphics in the game will adjust accordingly
@@ -37,7 +36,8 @@ car_enemy_location.center = left_lane, height*0.2
 
 
 
-#waits for user to click exit button and once they do so, exit app
+#game loop!
+running = True
 while running:
     #animate enemy vehicle
     #car_enemy_location[0] = x coord

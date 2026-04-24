@@ -14,7 +14,6 @@ import random # python -m pygame.examples.aliens
 #initialize pygame app
 pygame.init()
 pygame.font.init() #for score mod
-running = True
 
 #allows us to use relative sizing instead of absolute
 size = width, height = (1000, 600) #even if we change these numnbers, the graphics in the game will adjust accordingly
@@ -52,6 +51,7 @@ counter = 0 #used for mod where enemy's speed increases
 #mod - show score at top of screen
 font = pygame.font.Font(None, 36)
 
+running = True
 right_side = True
 while running:
     screen.fill((60, 220, 0)) #repaints the background everytime since graphics are being drawn overtop, necessary for score mod
