@@ -8,7 +8,7 @@ mod ideas:
 
 #https://www.youtube.com/watch?v=W-QOtdD3qx4
 
-import pygame #python3 -m pip install -U pygame --user
+import pygame #pip install pygame
 import random # python -m pygame.examples.aliens
 
 #initialize pygame app
@@ -81,6 +81,8 @@ while running:
         print("GAME OVER")
         break #breaks while loop to bring game to very last line of code, which collapses game window
 
+    #for score mod, if the player passes an enemy, the score increases
+    #if the cars are not in the same lane, but the have the same height, increase speed by 1
     if (car_location[0] != car_enemy_location[0]) and (car_enemy_location[1] == car_location[1] - 250):
         score += 1
         print(score)
@@ -90,7 +92,7 @@ while running:
         if (event.type == pygame.QUIT): #x button DOES NOT WORK without this
             running = False
 
-        #mod idea - make it so the car can not move outside of the road. this was not addressed in the video so below is how i thought to do it
+        #mod idea - make it so the car can not move outside of the road. 
         # control player car
         if(event.type == pygame.KEYDOWN):
             # if player clicks a or left arrow key, move left

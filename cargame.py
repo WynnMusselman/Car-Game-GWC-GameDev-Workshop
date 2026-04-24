@@ -1,6 +1,6 @@
 #https://www.youtube.com/watch?v=W-QOtdD3qx4
 
-import pygame #python3 -m pip install -U pygame --user
+import pygame #pip install pygame
 import random
 
 #initialize pygame app
@@ -61,7 +61,6 @@ while running:
         if (event.type == pygame.QUIT): #x button DOES NOT WORK without this
             running = False
 
-        #mod idea - make it so the car can not move outside of the road. this was not addressed in the video so below is how i thought to do it
         # control player car
         if(event.type == pygame.KEYDOWN):
             # if player clicks a or left arrow key, move left
@@ -73,7 +72,7 @@ while running:
 
 
     #GRAPHICS 
- 
+    
     # graphics of road
     pygame.draw.rect(
         screen, #surface
